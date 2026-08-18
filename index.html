@@ -635,3 +635,195 @@ function verifyUID() {
   }, 1000);
 }
 </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Fire ID Verify</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #0b0b0f;
+        color: white;
+    }
+
+    .box {
+        width: 350px;
+        padding: 28px;
+        background: #15151d;
+        border: 1px solid #292936;
+        border-radius: 18px;
+        box-shadow: 0 0 30px rgba(0,0,0,.5);
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 8px;
+        color: #ffb300;
+    }
+
+    .sub {
+        color: #999;
+        font-size: 13px;
+        margin-bottom: 22px;
+    }
+
+    input {
+        width: 100%;
+        padding: 13px;
+        border-radius: 9px;
+        border: 1px solid #333;
+        background: #0d0d12;
+        color: white;
+        outline: none;
+        margin-bottom: 12px;
+        font-size: 15px;
+    }
+
+    input:focus {
+        border-color: #ffb300;
+    }
+
+    button {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 9px;
+        background: #ffb300;
+        color: #111;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #ffc533;
+    }
+
+    #result {
+        display: none;
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        background: #0e1710;
+        border: 1px solid #2d6b35;
+    }
+
+    .verified {
+        color: #39e75f;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .username {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .uid {
+        color: #888;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .loading {
+        display: none;
+        margin-top: 15px;
+        color: #ffb300;
+        font-size: 13px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>FREE FIRE</h2>
+    <p class="sub">Verify your Player ID</p>
+
+    <input
+        type="text"
+        id="ffid"
+        placeholder="Enter Free Fire ID"
+        autocomplete="off"
+    >
+
+    <button onclick="verifyID()">VERIFY ID</button>
+
+    <div class="loading" id="loading">
+        Verifying Player ID...
+    </div>
+
+    <div id="result">
+        <div class="verified">✓ VERIFIED</div>
+
+        <div class="username" id="username">
+            Player
+        </div>
+
+        <div class="uid" id="uid">
+            UID: -
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+function verifyID() {
+
+    const id = document.getElementById("ffid").value.trim();
+    const loading = document.getElementById("loading");
+    const result = document.getElementById("result");
+
+    if (id === "") {
+        alert("Please enter Free Fire ID!");
+        return;
+    }
+
+    if (!/^[0-9]+$/.test(id)) {
+        alert("Please enter a valid numeric Free Fire ID!");
+        return;
+    }
+
+    result.style.display = "none";
+    loading.style.display = "block";
+
+    setTimeout(function() {
+
+        loading.style.display = "none";
+        result.style.display = "block";
+
+        /*
+          DEMO ONLY:
+          Me username eka example ekak.
+          Real FF username eka automatically
+          ganna API/backend ekak connect karanna one.
+        */
+
+        document.getElementById("username").innerText =
+            "FF Player";
+
+        document.getElementById("uid").innerText =
+            "UID: " + id;
+
+    }, 1500);
+}
+
+</script>
+
+</body>
+</html>
